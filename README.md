@@ -1,7 +1,7 @@
 # GShade Preset Installer
 **This application is a simple 64-bit C# installer to aid GShade preset creators with distribution and end-user installation.**
 
-There are no special requirements or dependencies for building, but you will want to start by replacing the default icons in the `Resources` folder.
+Visual Studio 2019 or newer is required for building, and you will want to start by replacing the default icons in the `Resources` folder.
 
 Afterwards, be sure to update the assembly information in `AssemblyInfo.cs`, as the `Company` field is used as the target installed folder name under `gshade-presets`.
 
