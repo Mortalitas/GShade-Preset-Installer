@@ -30,7 +30,13 @@ namespace GShadePresetInstaller
             _instLog = _instLog + "\r\n" + log;
             _instState = log;
 
-            System.IO.File.AppendAllText(Path.Combine(_instPath, "PresetLog.txt"), "\r\n" + log, utf8NoBOM);
+            try
+            {
+                System.IO.File.AppendAllText(Path.Combine(_instPath, "PresetLog.txt"), "\r\n" + log, utf8NoBOM);
+            }
+            catch
+            {
+            }
         }
 
         private static void CopyAll(DirectoryInfo source, DirectoryInfo target)
