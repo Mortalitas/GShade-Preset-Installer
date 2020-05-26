@@ -5,12 +5,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("My Preset Installer")] // The name of your installer.
+[assembly: AssemblyTitle("FaeShade Preset Installer")] // The name of your installer.
 [assembly: AssemblyDescription("A generic preset installer for GShade.")] // The description of your installer.
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("MyPresetFolderName")] // The name of the company/creator, and also the name of the folder your presets get installed to. You can change this behavior in App.xaml.cs my modifying _presetPathName.
-[assembly: AssemblyProduct("My Preset Installer")] // The name of your installer.
-[assembly: AssemblyCopyright("Copyright © MyName 2020")] // Copyright information for your installer.
+[assembly: AssemblyCompany("FaeShade")] // The name of the company/creator, and also the name of the folder your presets get installed to. You can change this behavior in App.xaml.cs my modifying _presetPathName.
+[assembly: AssemblyProduct("FaeShade Preset Installer")] // The name of your installer.
+[assembly: AssemblyCopyright("Copyright © The Fashionista 2020")] // Copyright information for your installer.
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

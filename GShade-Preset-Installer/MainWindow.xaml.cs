@@ -14,7 +14,7 @@ namespace GShadePresetInstaller
             InitializeComponent();
             this.Title = App._windowTitle;
             this.textHeader.Text = App._instName;
-            this.textInstructions.Text = "Thanks for downloading the " + App._presetPathName + " presets! Press Start to begin installation.";
+            this.textInstructions.Text = "Thanks for downloading the " + App._presetPathName + "! Press Start to begin installation.";
         }
         private void Next_Progress(object sender, RoutedEventArgs e)
         {
