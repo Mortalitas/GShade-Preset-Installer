@@ -334,7 +334,7 @@ namespace GShadePresetInstaller
             {
                 if (file.Length >= 5)
                 {
-                    if (file.Substring(file.Length - 4) == ".png" || file.Substring(file.Length - 4) == ".jpg" || file.Substring(file.Length - 5) == ".jpeg")
+                    if (file.Substring(file.Length - 4) == ".png" || file.Substring(file.Length - 4) == ".dds" || file.Substring(file.Length - 4) == ".jpg" || file.Substring(file.Length - 5) == ".jpeg")
                     {
                         imageList.Add(file);
                     }
