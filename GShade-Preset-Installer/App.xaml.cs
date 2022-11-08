@@ -340,10 +340,11 @@ namespace GShadePresetInstaller
                     }
                 }
             }
-            // Move the textures into the global GShade Textures folder.
+            // Move the textures into the shared Custom GShade Textures folder.
+            string customTexturePath = Path.Combine(Environment.GetEnvironmentVariable("Public"), "GShade Custom Shaders\\Textures");
             foreach (string imagePath in imageList)
             {
-                CopyFile(imagePath, Path.Combine(_instPath, "gshade-shaders\\Textures", Path.GetFileName(imagePath)), true);
+                CopyFile(imagePath, customTexturePath, true);
                 DeleteFile(imagePath);
             }
 
