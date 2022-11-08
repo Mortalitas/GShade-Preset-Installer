@@ -32,7 +32,11 @@ namespace GShadePresetInstaller
 
             try
             {
-                System.IO.File.AppendAllText(Path.Combine(_instPath, "PresetLog.txt"), "\r\n" + log, utf8NoBOM);
+                using (StreamWriter logFile = System.IO.File.AppendText(Path.Combine(_instPath, "PresetLog.txt")))
+                {
+                    logFile.WriteLine("\r\n" + log);
+                    logFile.Close();
+                }
             }
             catch
             {
@@ -53,22 +57,22 @@ namespace GShadePresetInstaller
                 }
                 catch
                 {
-                    AddLog("Could not create: " + target.FullName);
+                    AddLog("Failed to create: " + target.FullName);
                 }
             }
 
-            var _0 = default(FileSystemInfo[]);
+            FileSystemInfo[] sourceFiles;
             try
             {
-                _0 = source.GetFileSystemInfos("*", SearchOption.AllDirectories);
+                sourceFiles = source.GetFileSystemInfos("*", SearchOption.AllDirectories);
             }
             catch
             {
                 // Reference does not exist.
-                _0 = new FileSystemInfo[0];
+                sourceFiles = new FileSystemInfo[0];
             }
 
-            foreach (var fsi in _0)
+            foreach (var fsi in sourceFiles)
             {
                 var sourceName = fsi.FullName.Remove(0, source.FullName.Length + 1);
                 var targetPath = Path.Combine(target.FullName, sourceName);
@@ -86,11 +90,18 @@ namespace GShadePresetInstaller
 
         private static void CopyDirectory(string sourceDirectory, string targetDirectory)
         {
-            DirectoryInfo diSource = new DirectoryInfo(sourceDirectory);
-            DirectoryInfo diTarget = new DirectoryInfo(targetDirectory);
+            try
+            {
+                DirectoryInfo diSource = new DirectoryInfo(sourceDirectory);
+                DirectoryInfo diTarget = new DirectoryInfo(targetDirectory);
 
-            CopyAll(diSource, diTarget);
-            AddLog("Copied: " + sourceDirectory + " To: " + targetDirectory);
+                CopyAll(diSource, diTarget);
+                AddLog("Copied: " + sourceDirectory + " To: " + targetDirectory);
+            }
+            catch
+            {
+                AddLog("Failed to copy: " + sourceDirectory + " To: " + targetDirectory);
+            }
         }
 
         private static void CopyFile(string source, string target, bool overwrite)
@@ -135,13 +146,27 @@ namespace GShadePresetInstaller
                 }
                 catch (IOException)
                 {
-                    Directory.Delete(path, true);
-                    AddLog("Removed: " + path);
+                    try
+                    {
+                        Directory.Delete(path, true);
+                        AddLog("Removed: " + path);
+                    }
+                    catch
+                    {
+                        AddLog("Failed to remove (IOException): " + path);
+                    }
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    Directory.Delete(path, true);
-                    AddLog("Removed: " + path);
+                    try
+                    {
+                        Directory.Delete(path, true);
+                        AddLog("Removed: " + path);
+                    }
+                    catch
+                    {
+                        AddLog("Failed to remove (UnauthorizedAccessException): " + path);
+                    }
                 }
                 catch
                 {
@@ -171,13 +196,27 @@ namespace GShadePresetInstaller
                 }
                 catch (IOException)
                 {
-                    System.IO.File.Delete(path);
-                    AddLog("Removed: " + path);
+                    try
+                    {
+                        System.IO.File.Delete(path);
+                        AddLog("Removed: " + path);
+                    }
+                    catch
+                    {
+                        AddLog("Failed to remove (IOException): " + path);
+                    }
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    System.IO.File.Delete(path);
-                    AddLog("Removed: " + path);
+                    try
+                    {
+                        System.IO.File.Delete(path);
+                        AddLog("Removed: " + path);
+                    }
+                    catch
+                    {
+                        AddLog("Failed to remove (UnauthorizedAccessException): " + path);
+                    }
                 }
                 catch
                 {
