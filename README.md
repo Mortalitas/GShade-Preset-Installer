@@ -1,5 +1,5 @@
 # GShade Preset Installer
-**This application is a simple 64-bit C# .NET Framework 4.7.2 installer to aid GShade preset creators with distribution and end-user installation.**
+**This application is a simple 64-bit C# .NET Framework `4.7.2` installer to aid GShade preset creators with distribution and end-user installation.**
 
 Visual Studio 2019 or newer is required for building, and you will want to start by replacing the default icons in the `Resources` folder.
 
@@ -29,3 +29,5 @@ Continuing with the above zip archive structure example and remembering that the
  * `?:\Path\To\Etc\Game\gshade-presets\MyBrandName\My Studio Presets\MyStudioPreset1.ini`
  * `?:\Path\To\Etc\Game\gshade-presets\MyBrandName\My Studio Presets\MyStudioPreset2.ini`
  * `?:\Path\To\Etc\Game\gshade-presets\MyBrandName\My Outdoor Presets\MyOutdoorPreset1.ini`
+ * `%Public%\GShade Custom Shaders\Textures\OutdoorSnow.png`
+ * `%Public%\GShade Custom Shaders\Textures\StudioGlare.jpg`
