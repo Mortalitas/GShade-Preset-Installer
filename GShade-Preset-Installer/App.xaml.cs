@@ -252,7 +252,13 @@ namespace GShadePresetInstaller
         {
             RegistryKey ret = baseKey.OpenSubKey(subKeyName);
 
-            return ret != null;
+            bool exists = ret != null;
+            if (exists)
+            {
+                ret.Close();
+            }
+
+            return exists;
         }
 
         public static bool BuildGamePaths()
@@ -380,9 +386,10 @@ namespace GShadePresetInstaller
 
         public App()
         {
+            // Show stacktrace and unhandled exception information via popup window.
             AppDomain.CurrentDomain.UnhandledException += (ls, le) => MessageBox.Show(le.ExceptionObject.ToString(), _windowTitle, MessageBoxButton.OK, MessageBoxImage.Error);
 
-            // Set default font size
+            // Set default font size.
             {
                 var style = new Style(typeof(Window));
                 {
