@@ -25,12 +25,14 @@ namespace GShadePresetInstaller
 
                 if (!App.BuildGamePaths())
                 {
-                    MessageBox.Show("No GShade installations found. The preset installer will now close.", "Error", MessageBoxButton.OK, MessageBoxImage.None);
+                    MessageBox.Show("No GShade installations found. The preset installer will now close.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    App.CloseLog();
                     this.Close();
                 }
                 else if (!App.ZipExtractionProcess())
                 {
-                    MessageBox.Show("Preset extraction failed. The preset installer will now close.", "Error", MessageBoxButton.OK, MessageBoxImage.None);
+                    MessageBox.Show("Preset extraction failed. The preset installer will now close.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    App.CloseLog();
                     this.Close();
                 }
                 else
