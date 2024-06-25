@@ -24,6 +24,29 @@ namespace GShadePresetInstaller
         public static string _instState = "Starting preset installation...";
         public static List<string> _gamePaths = new List<string>();
         public static System.Text.UTF8Encoding utf8NoBOM = new System.Text.UTF8Encoding(false);
+        private static StreamWriter _logFile;
+
+        public static void InitLog()
+        {
+            try
+            {
+                _logFile = System.IO.File.AppendText(Path.Combine(_instPath, "PresetLog.txt"));
+            }
+            catch
+            {
+            }
+        }
+
+        public static void CloseLog()
+        {
+            try
+            {
+                _logFile.Close();
+            }
+            catch
+            {
+            }
+        }
 
         public static void AddLog(string log)
         {
@@ -32,11 +55,7 @@ namespace GShadePresetInstaller
 
             try
             {
-                using (StreamWriter logFile = System.IO.File.AppendText(Path.Combine(_instPath, "PresetLog.txt")))
-                {
-                    logFile.WriteLine("\r\n" + log);
-                    logFile.Close();
-                }
+                _logFile.WriteLine(log);
             }
             catch
             {

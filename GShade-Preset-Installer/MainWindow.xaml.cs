@@ -15,6 +15,7 @@ namespace GShadePresetInstaller
             this.Title = App._windowTitle;
             this.textHeader.Text = App._instName;
             this.textInstructions.Text = "Thanks for downloading the " + App._presetPathName + " presets! Press Start to begin installation.";
+            App.InitLog();
         }
         private void Next_Progress(object sender, RoutedEventArgs e)
         {
@@ -37,12 +38,14 @@ namespace GShadePresetInstaller
                     App.FileDeploymentProcess();
 
                     MessageBox.Show("Preset installation complete!", "Success", MessageBoxButton.OK, MessageBoxImage.None);
+                    App.CloseLog();
                     this.Close();
                 }
             }
         }
         private void Cancel_Close(object sender, RoutedEventArgs e)
         {
+            App.CloseLog();
             System.Windows.Application.Current.Shutdown();
         }
     }
