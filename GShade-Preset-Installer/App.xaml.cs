@@ -323,6 +323,7 @@ namespace GShadePresetInstaller
             catch
             {
                 AddLog("Failed to unzip: " + zipPath + " To: " + _zipTempPath);
+                DeleteDirectory(_zipTempPath);
                 return false;
             }
 
@@ -334,6 +335,7 @@ namespace GShadePresetInstaller
             catch
             {
                 AddLog("Failed to unzip: " + zipPath + " To: " + _zipTempPath);
+                DeleteDirectory(_zipTempPath);
                 return false;
             }
             // Delete payload zip after extraction.
